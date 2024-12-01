@@ -63,29 +63,29 @@ open powershell and run
 '''spoof 0x24 original.jpg altered.jpg
 
 ## Notes
-The tool is packaged as a standalone executable, so you do not need Python or additional dependencies installed on the target machine.
-The tool is designed to work with PNG images. If the input image is not in PNG format, it will be automatically converted.
-The tool will continue to modify the image's metadata until it matches the specified hash prefix.
-The default hash algorithm is sha512, but you can change it by modifying the script.
+- The tool is packaged as a standalone executable, so you do not need Python or additional dependencies installed on the target machine.
+- The tool is designed to work with PNG images. If the input image is not in PNG format, it will be automatically converted.
+- The tool will continue to modify the image's metadata until it matches the specified hash prefix.
+- The default hash algorithm is sha512, but you can change it by modifying the script.
 
 ##Spoof.py
 Script Overview
-The script has the following core functions:
+- The script has the following core functions:
 
 calculate_hash(file_path, hash_algorithm="sha512"):
 
-This function calculates the hash of a file using the specified hash algorithm (default is sha512).
-It reads the file in chunks and returns the hexadecimal hash of the file.
-add_metadata(image_path, output_path, metadata):
+- This function calculates the hash of a file using the specified hash algorithm (default is sha512).
+- It reads the file in chunks and returns the hexadecimal hash of the file.
+- add_metadata(image_path, output_path, metadata):
 
-This function adds metadata to an image file.
-It opens the image, adds the provided metadata, and saves the image in PNG format (converting to PNG if necessary).
-The metadata is added to the image using the PngInfo object from the Pillow library.
-modify_image_to_match_hash(target_prefix, original_path, altered_path, hash_algorithm="sha512"):
+# This function adds metadata to an image file.
+- It opens the image, adds the provided metadata, and saves the image in PNG format (converting to PNG if necessary).
+-  metadata is added to the image using the PngInfo object from the Pillow library.
+- modify_image_to_match_hash(target_prefix, original_path, altered_path, hash_algorithm="sha512"):
 
-This function iterates over the metadata and adds incremental changes until the hash of the altered image matches the specified target_prefix.
-It calls add_metadata to alter the image and checks if the hash of the modified image matches the desired hash prefix.
-The script will continue this process, incrementing the metadata and attempting to match the hash until a match is found.
+- This function iterates over the metadata and adds incremental changes until the hash of the altered image matches the specified target_prefix.
+- It calls add_metadata to alter the image and checks if the hash of the modified image matches the desired hash prefix.
+- The script will continue this process, incrementing the metadata and attempting to match the hash until a match is found.
 Usage
 To run the script, use the following command format:
 
